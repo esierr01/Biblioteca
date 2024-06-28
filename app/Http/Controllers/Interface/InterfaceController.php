@@ -12,8 +12,18 @@ class InterfaceController extends Controller
     public function index()
     {
         $libros = Libro::where('estatus', 0)->get();
-        return view('modules.index', compact('libros'));
+        return view('interface.index', compact('libros'));
     }
 
-    
+    //* Página de acerca del Sistema (frontend)
+    public function acerca()
+    {
+        return view('interface.acerca');
+    }
+
+    //* Página de contacto del Sistema (frontend)
+    public function contacto()
+    {
+        return view('interface.contacto');
+    }
 }
