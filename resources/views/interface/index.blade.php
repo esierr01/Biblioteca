@@ -12,7 +12,22 @@
         Colección de Libros
     </div>
 
-    <div class="container contenedor-modulo">
+    <div class="contenedor-modulo">
+        @if ($libros->isEmpty())
+            <h2>¡¡ No hay libros disponibles en la Biblioteca !!</h2>
+        @else
+            @foreach ($libros as $libro)
+                <div class="tarjeta">
+                    <div class="card-body">
+                        <p class="titulo-libro">{{ $libro->titulo }}</p>
+                        <img src="{{ $libro->caratula }}" alt="caratula">
+                        <p class="sub-titulo">Autor: {{ $libro->autor }}</p>
+                        <p class="sub-titulo">Año: {{ $libro->ano_publica }}</p>
+                    </div>
+                </div>
+            @endforeach
 
+
+        @endif
     </div>
 @endsection

@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
 
             $table->boolean('estatus');
-            $table->string('titulo',120);
+            $table->string('caratula', 120);
+            $table->string('titulo', 120);
             $table->year('ano_publica');
             $table->string('autor', 120);
             $table->smallInteger('edicion');

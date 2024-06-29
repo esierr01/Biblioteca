@@ -1,4 +1,4 @@
-* {
+* { 
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,7 +9,7 @@
 }
 
 body {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url('/libs/img/fondo_biblio.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/libs/img/fondo_biblio.jpg');
     background-repeat: no-repeat;
     background-size: 100% 18em;
 }
@@ -60,4 +60,51 @@ body {
     letter-spacing: 0.1em;
     color: #fff;
 }
+
+.contenedor-modulo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 5em;
+    margin-bottom: 2em;
+}
+
+.tarjeta {
+    flex: 1 1 18em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    margin-bottom: 1em;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #4b2c33, #4e4376);
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.8);
+    text-align: center;
+    max-width: 18em;
+}
+
+.sub-titulo {
+    padding: 0 0.8em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+    font-weight: normal;
+    font-size: 1em;
+}
+
+.titulo-libro {
+    padding: 0 0.8em;
+    margin-top: 0.5em;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: yellow;
+}
+
+.tarjeta img {
+    width: 12em;
+    height: 18em;
+    /* height: auto; */
+    margin-bottom: 0.5em;
+}
+
 
