@@ -72,12 +72,8 @@ footer {
     margin-top: 5.5em;
 }
 
-.buscar-libros {
-    margin-top: 5em;
-}
-
 .contenedor-index {
-    margin-top: 2.5em;
+    margin-top: 3.5em;
 }
 
 #lenguajes i {
@@ -99,6 +95,10 @@ table td {
 
 .portada-libro {
     width: 5em;
+}
+
+.titulo-index {
+    font-size: 1.2em;
 }
 
 @media screen and (max-width: 780px) {

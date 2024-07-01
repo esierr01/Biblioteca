@@ -163,7 +163,7 @@ CREATE TABLE `libros` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -171,7 +171,7 @@ CREATE TABLE `libros` (
 --
 
 /*!40000 ALTER TABLE `libros` DISABLE KEYS */;
-INSERT INTO `libros` VALUES (1,0,'\\libs\\img\\no_disponible.png','Aprendiendo a programar',2020,'Pedro Peñique',1,2,2,'0000-00-00','2024-06-20 04:00:00','2024-06-20 04:00:00'),(2,0,'\\libs\\img\\ejemplo.png','Programando Javascript (el lenaguaje de programación de la web)',2000,'Holloway Donovan',2,3,3,'0000-00-00','2024-06-22 04:00:00','2024-06-22 04:00:00'),(3,0,'\\libs\\img\\no_disponible.png','Programando PHP',2002,'Katty Newman',1,2,0,'0000-00-00','2024-06-22 04:00:00','2024-06-22 04:00:00'),(4,0,'\\libs\\img\\ejemplo.png','PHP MVC (el patron de programación más famoso)',2008,'Katty Newman',1,2,2,'0000-00-00','2024-06-22 04:00:00','2024-06-22 04:00:00'),(5,0,'\\libs\\img\\ejemplo.png','Laravel Framework V10',2021,'Petrof Daniels',1,2,2,'0000-00-00','2024-06-22 04:00:00','2024-06-22 04:00:00'),(6,0,'\\libs\\img\\no_disponible.png','Laravel Framework V11',2024,'Petrof Daniels',1,2,2,'0000-00-00','2024-06-22 04:00:00','2024-06-22 04:00:00');
+INSERT INTO `libros` VALUES (1,0,'\\libs\\img\\no_disponible.png','Aprendiendo a programar',2020,'Pedro Peñique',1,2,2,'0000-00-00','2024-06-20 04:00:00','2024-06-20 04:00:00'),(2,0,'\\libs\\img\\ejemplo.png','Programando Javascript (el lenaguaje de programación de la web)',2000,'Holloway Donovan',2,3,3,'0000-00-00','2024-06-22 04:00:00','2024-06-22 04:00:00'),(3,0,'\\libs\\img\\no_disponible.png','Programando PHP',2002,'Katty Newman',1,2,0,'0000-00-00','2024-06-22 04:00:00','2024-06-22 04:00:00'),(4,0,'\\libs\\img\\ejemplo.png','PHP MVC (el patron de programación más famoso)',2008,'Katty Newman',1,2,2,'0000-00-00','2024-06-22 04:00:00','2024-06-22 04:00:00'),(5,0,'\\libs\\img\\ejemplo.png','Laravel Framework V10',2021,'Petrof Daniels',1,2,2,'0000-00-00','2024-06-22 04:00:00','2024-06-22 04:00:00'),(6,0,'\\libs\\img\\no_disponible.png','Laravel Framework V11',2024,'Petrof Daniels',1,2,2,'0000-00-00','2024-06-22 04:00:00','2024-06-22 04:00:00'),(7,0,'\\libs\\img\\no_disponible.png','Conan El Barbaro',1999,'Donald Duck',2,3,0,'0000-00-00','2024-07-01 16:41:36','2024-07-01 16:41:40'),(8,0,'\\libs\\img\\no_disponible.png','Cuatro Bodas y un Funeral',1997,'Desconocido',2,3,2,'0000-00-00','2024-07-01 16:42:37','2024-07-01 16:42:40'),(9,0,'\\libs\\img\\no_disponible.png','La última pasión de cristo',1997,'Mel Gibson',2,3,2,'0000-00-00','2024-07-01 16:42:37','2024-07-01 16:42:40'),(10,0,'\\libs\\img\\no_disponible.png','Chapie',1997,'Asimov Ninforo',2,3,2,'0000-00-00','2024-07-01 16:42:37','2024-07-01 16:42:40'),(11,0,'\\libs\\img\\no_disponible.png','Quien se comió mi queso',1997,'Lucas Adams',2,3,2,'0000-00-00','2024-07-01 16:42:37','2024-07-01 16:42:40'),(12,0,'\\libs\\img\\no_disponible.png','El principito',1997,'Pedro Sinforoso',2,3,2,'0000-00-00','2024-07-01 16:42:37','2024-07-01 16:42:40'),(13,0,'\\libs\\img\\no_disponible.png','Crepusculo',1997,'Stephani Meyer',2,3,2,'0000-00-00','2024-07-01 16:42:37','2024-07-01 16:42:40'),(14,0,'\\libs\\img\\no_disponible.png','Dracula',1997,'Briam Strok',2,3,2,'0000-00-00','2024-07-01 16:42:37','2024-07-01 16:42:40'),(15,0,'\\libs\\img\\no_disponible.png','Como ser millonario en un año',1997,'Peter Ottolla',2,3,2,'0000-00-00','2024-07-01 16:42:37','2024-07-01 16:42:40');
 /*!40000 ALTER TABLE `libros` ENABLE KEYS */;
 
 --
@@ -244,7 +244,7 @@ CREATE TABLE `sessions` (
 --
 
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('0xIrROn50YYii2EOrObtcv4xEzn5q24vcvbwbusy',NULL,'127.0.0.1','Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36','YTo0OntzOjY6Il90b2tlbiI7czo0MDoiVDB0NnVoTnpqQ3V6NEQ4dU9nbmo4SURqd29EQXR2QlE1MDNBQmtvQSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjE6e3M6ODoiaW50ZW5kZWQiO3M6MzI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9pbmRleF9tZW51Ijt9fQ==',1719802893);
+INSERT INTO `sessions` VALUES ('0xIrROn50YYii2EOrObtcv4xEzn5q24vcvbwbusy',NULL,'127.0.0.1','Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36','YTo0OntzOjY6Il90b2tlbiI7czo0MDoiVDB0NnVoTnpqQ3V6NEQ4dU9nbmo4SURqd29EQXR2QlE1MDNBQmtvQSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjE6e3M6ODoiaW50ZW5kZWQiO3M6MzI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9pbmRleF9tZW51Ijt9fQ==',1719802893),('I0vOaDaz65vyGaHUzzTBhPaCtEpSPF1jNyavliHR',1,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36','YTo0OntzOjY6Il90b2tlbiI7czo0MDoiODR5RXhvVkhCWjdhQ2M5QTFKYllkV1FBd2JJZUlnS3FLdTlxYkRBZCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9saWJyb3MiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=',1719857824);
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 
 --
@@ -273,7 +273,7 @@ CREATE TABLE `users` (
 --
 
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Ms. Hailee McLaughlin II','emmanuel.sierra@gmail.com','2024-07-01 00:24:00','$2y$12$8PUqWoy3q6NxBRaYoF7Ry.QlwoIBIWFprkrQvUxau4HSCJjIaUS5O','2mEl318aeQV3um9nrno8YHt5jyLzt5kkUwjHKGTQCgSDlhUxOJBkVLvjUuAx','2024-07-01 00:24:00','2024-07-01 00:24:00');
+INSERT INTO `users` VALUES (1,'Emmanuel Sierra Pacheco','emmanuel.sierra@gmail.com','2024-07-01 00:24:00','$2y$12$8PUqWoy3q6NxBRaYoF7Ry.QlwoIBIWFprkrQvUxau4HSCJjIaUS5O','ZPdU9sblxPv9Es95u33wuiXsxAzgbMzvprCBDmnOTxFhxhPdfR0AfhoW1Y6L','2024-07-01 00:24:00','2024-07-01 00:24:00');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 --
@@ -289,4 +289,4 @@ INSERT INTO `users` VALUES (1,'Ms. Hailee McLaughlin II','emmanuel.sierra@gmail.
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-30 23:09:46
+-- Dump completed on 2024-07-01 14:33:24
