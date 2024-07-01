@@ -12,7 +12,8 @@ class LibroController extends Controller
      */
     public function index()
     {
-        //
+        $libros = Libro::where('estatus', 0)->get();
+        return view('modules.libros.index', compact('libros'));
     }
 
     /**
