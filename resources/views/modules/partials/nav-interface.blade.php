@@ -12,16 +12,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('interface.index') }}">Libros</a>
+                    <a class="nav-link" href="{{ route('interface.index') }}">LIBROS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('interface.acerca') }}">Acerca</a>
+                    <a class="nav-link" href="{{ route('interface.acerca') }}">ACERCA</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('interface.contacto') }}">Contacto</a>
+                    <a class="nav-link" href="{{ route('interface.contacto') }}">CONTACTO</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">Gestión</a>
+                    <a class="nav-link" href="{{ route('login') }}">GESTION</a>
                 </li>
             </ul>
         </div>

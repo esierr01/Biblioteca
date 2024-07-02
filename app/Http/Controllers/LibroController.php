@@ -21,7 +21,7 @@ class LibroController extends Controller
      */
     public function create()
     {
-        //
+        return view('modules.libros.create');
     }
 
     /**
@@ -29,7 +29,7 @@ class LibroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "hola, se supone que aqui se deben guardar los datos, jeje";
     }
 
     /**
