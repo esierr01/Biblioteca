@@ -96,7 +96,11 @@ table td {
 .titulo-index {
     font-size: 1.2em;
 }
-
+.imagen-libro{
+    margin-top: 0.5em;
+    width: 11em;
+    height: 14em;
+}
 /** Configuración Responsive */
 
 @media screen and (max-width: 780px) {

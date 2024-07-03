@@ -29,7 +29,23 @@ class LibroController extends Controller
      */
     public function store(Request $request)
     {
-        return "hola, se supone que aqui se deben guardar los datos, jeje";
+        // dd($request->all());
+        $request->validate([
+            'titulo' => 'required',
+            'autor' => 'required',
+            'ano_publica' => 'required',
+            'edicion' => 'required',
+            'ejemplares' => 'required',
+            'disponibles' => 'required|lte:ejemplares'
+        ],[
+            'titulo.required' => '* título requerido *',
+            'autor.required' => '* autor requerido*',
+            'ano_publica.required' => '* año de publicación requerido *',
+            'edicion.required' => '* número de edición requerido *',
+            'ejemplares.required' => '* número de ejemplares existentes es requerido *',
+            'disponibles.required' => '* número de ejemplares existentes disponibles es requerido *',
+            'disponibles.lte' => '* ejemplares disponibles no puede ser mayor a los existentes *'
+        ]);
     }
 
     /**
