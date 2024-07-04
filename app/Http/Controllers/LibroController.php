@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Libro;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class LibroController extends Controller
 {
@@ -30,22 +31,6 @@ class LibroController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $request->validate([
-            'titulo' => 'required',
-            'autor' => 'required',
-            'ano_publica' => 'required',
-            'edicion' => 'required',
-            'ejemplares' => 'required',
-            'disponibles' => 'required|lte:ejemplares'
-        ],[
-            'titulo.required' => '* título requerido *',
-            'autor.required' => '* autor requerido*',
-            'ano_publica.required' => '* año de publicación requerido *',
-            'edicion.required' => '* número de edición requerido *',
-            'ejemplares.required' => '* número de ejemplares existentes es requerido *',
-            'disponibles.required' => '* número de ejemplares existentes disponibles es requerido *',
-            'disponibles.lte' => '* ejemplares disponibles no puede ser mayor a los existentes *'
-        ]);
         
         $libro = Libro::create($request->all());
 
@@ -74,7 +59,7 @@ class LibroController extends Controller
      */
     public function edit(Libro $libro)
     {
-        //
+        return view('modules.libros.editar', compact('libro'));
     }
 
     /**
@@ -82,7 +67,20 @@ class LibroController extends Controller
      */
     public function update(Request $request, Libro $libro)
     {
-        //
+        if ($request->hasFile('caratula')) {
+            Storage::disk('public')->delete($libro->caratula);
+
+            $originalFileName = $request->file('caratula')->getClientOriginalExtension();
+            $newFileName = $libro->id . '.' . $originalFileName; 
+            $rutaArchivo = $request->file('caratula')->storeAs('img', $newFileName, 'public');
+
+            $libro->caratula = 'img/' . $newFileName;
+            $libro->save();
+        }
+
+        $libro->update($request->input());
+
+        return redirect()->route('libros.index')->with('success', 'Libro actualizado exitosamente');
     }
 
     /**
@@ -90,6 +88,6 @@ class LibroController extends Controller
      */
     public function destroy(Libro $libro)
     {
-        //
+        
     }
 }

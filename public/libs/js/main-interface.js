@@ -53,34 +53,49 @@ function mostrarImagen(event) {
     }
 }
 
-//* Procedimiento y funcion para que guarde el nombre del archivo de caratula seleccionado en caso de error en validación
-document.addEventListener('DOMContentLoaded', function () {
-    const fileInput = document.getElementById('formFileSm');
-    const imgElement = document.getElementById('ImagenLibro');
+//* Validación de los input del form de libros
+document.getElementById('enviarBtn').addEventListener('click', function(event) {
+    var ejemplares = document.getElementById('ejemplares').value;
+    var disponibles = document.getElementById('disponibles').value;
+    var titulo = document.getElementById('titulo').value;
+    var autor = document.getElementById('autor').value;
+    var errorSpanDisponible = document.getElementById('errorDisponible');
+    var errorSpanTitulo = document.getElementById('errorTitulo');
+    var errorSpanAutor = document.getElementById('errorAutor');
 
-    // Limpiar localStorage si la página se carga sin errores de validación
-    if (!document.querySelector('.text-danger')) {
-        localStorage.removeItem('caratula_file_name');
-        localStorage.removeItem('caratula_file_data_url');
+    if (parseInt(disponibles) > parseInt(ejemplares)) {
+        event.preventDefault(); // Evita el envío del formulario
+        errorSpanDisponible.textContent = 'Los ejemplares disponibles no pueden ser mayores que los existentes';
+        errorSpanDisponible.style.color = 'red'; // Opcional: Cambia el color del mensaje de error
+    } else {
+        errorSpanDisponible.textContent = ''; // Limpia el mensaje de error si la validación es exitosa
     }
 
-    // Verifica si hay un nombre de archivo y una URL de imagen guardados en localStorage
-    const savedFileName = localStorage.getItem('caratula_file_name');
-    const savedFileDataURL = localStorage.getItem('caratula_file_data_url');
-
-    if (savedFileName && savedFileDataURL) {
-        // Crea un nuevo archivo vacío con el mismo nombre guardado (solo para mostrar el nombre)
-        const file = new File([""], savedFileName);
-        const dataTransfer = new DataTransfer();
-        dataTransfer.items.add(file);
-        fileInput.files = dataTransfer.files;
-
-        // Muestra la imagen guardada
-        imgElement.src = savedFileDataURL;
+    if (titulo.trim() === '') {
+        event.preventDefault(); // Evita el envío del formulario
+        errorSpanTitulo.textContent = 'El título es requerido para cargar un libro';
+        errorSpanTitulo.style.color = 'red'; // Opcional: Cambia el color del mensaje de error
+    } else {
+        errorSpanTitulo.textContent = ''; // Limpia el mensaje de error si la validación es exitosa
     }
 
-    // Escucha el evento de cambio del input de archivo
-    fileInput.addEventListener('change', function (event) {
-        mostrarImagen(event);
-    });
+    if (autor.trim() === '') {
+        event.preventDefault(); // Evita el envío del formulario
+        errorSpanAutor.textContent = 'El autor es requerido para cargar un libro';
+        errorSpanAutor.style.color = 'red'; // Opcional: Cambia el color del mensaje de error
+    } else {
+        errorSpanAutor.textContent = ''; // Limpia el mensaje de error si la validación es exitosa
+    }
+});
+
+let btnEliminar = document.querySelector('#btnEliminar');
+let lbl_nombre = document.querySelector('#lbl_nombre');
+window.setInfo = (id, nombre) => {
+    btnEliminar.setAttribute('data-id', id);
+    lbl_nombre.innerHTML = 'El Libro: <b> '+nombre+'</b>';
+}
+btnEliminar.addEventListener('click', ()=>{
+    let id = btnEliminar.getAttribute('data-id');
+    let form = document.querySelector('#frm_'+id);
+    form.submit();
 });

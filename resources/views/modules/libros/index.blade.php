@@ -18,7 +18,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/5f0926b9a9.js" crossorigin="anonymous"></script>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.js"></script>
@@ -31,13 +32,25 @@
 
 @section('content')
     <div class="container contenedor-index">
+        @if ($msj = Session::get('success'))
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert" id="alerta">
+                        <strong><i class="fa-solid fa-check"></i></strong> {{ $msj }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+        @endif
+        
         <div class="card">
             <div class="card-header">
                 <div class="row col-12">
                     <div class="col-6 mt-1"><span class="titulo-index">Libros Existentes</span></div>
                     <div class="col-6 d-flex justify-content-end">
-                        <a class="btn btn-blue mx-1" href="{{ route('libros.create') }}"><i class="fa-solid fa-circle-plus"></i> Incluir Nuevo Libro</a>
-                    </div>                
+                        <a class="btn btn-blue mx-1" href="{{ route('libros.create') }}"><i
+                                class="fa-solid fa-circle-plus"></i> Incluir Nuevo Libro</a>
+                    </div>
                 </div>
             </div>
 
@@ -61,10 +74,11 @@
                             <tr>
                                 <td class="text-primary" width="50px">{{ $libro->titulo }}</td>
                                 <td class="text-center">
-                                    <a href="{{ $libro->caratula }}" target="_blank">
-                                        <img class="portada-libro" src="{{ asset('storage') . '/' . $libro->caratula }}" alt="Title" />
+                                    <a href="{{ asset('storage') . '/' . $libro->caratula }}" target="_blank">
+                                        <img class="portada-libro" src="{{ asset('storage') . '/' . $libro->caratula }}"
+                                            alt="Title" />
                                     </a>
-                                    
+
                                 </td>
                                 <td class="text-center">{{ $libro->ano_publica }}</td>
                                 <td width="30px">{{ $libro->autor }}</td>
@@ -79,8 +93,18 @@
                                             Opciones
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">Editar</a></li>
-                                            <li><a class="dropdown-item" href="#">Eliminar</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('libros.edit', $libro->id) }}">Editar</a></li>
+
+                                            <form action="{{ route('libros.destroy', $libro->id) }}" method="post" id="frm_{{ $libro->id }}">
+                                                @method('DELETE')
+                                                @csrf
+
+                                                <li>
+                                                    <a onclick="setInfo({{ $libro->id }}, '{{ $libro->titulo }}')" class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalConfirmacion">Eliminar</a>
+                                                </li>
+
+                                            </form>
+
                                         </ul>
                                     </div>
                                 </td>
@@ -88,6 +112,27 @@
                         @endforeach
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" tabindex="-1" id="modalConfirmacion">
+        <div class="modal-dialog">
+            <div class="modal-content custom-fondo">
+                <div class="modal-header">
+                    <h5 class="modal-title">¿Seguro que desea eliminar?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">
+                        <i class="fa-solid fa-triangle-exclamation fs-3 text-danger"></i>
+                        <label id="lbl_nombre"></label>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="btnEliminar" type="button" class="btn btn-danger">Si, Borrar</button>
+                </div>
             </div>
         </div>
     </div>
