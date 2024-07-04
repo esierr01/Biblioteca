@@ -68,6 +68,7 @@
                                 <div class="mb-3"></div>
                             @enderror
 
+
                             <div class="input-group mx-2">
                                 <span class="input-group-text" id="basic-addon1">Autor</span>
                                 <input type="text" name="autor" class="form-control"
@@ -83,15 +84,32 @@
                                 <div class="mb-3"></div>
                             @enderror
 
+
                             <div class="input-group">
                                 <label class="input-group-text" for="inputGroupSelect01">Publicación (Año):</label>
                                 <select name="ano_publica" class="form-select" id="inputGroupSelect01">
                                     @for ($ano = 1900; $ano < 2090; $ano++)
-                                        @if ($ano == 2024)
-                                            <option selected value="{{ $ano }}">{{ $ano }}</option>
+                                        @isset($libro)
+                                            @if ($ano == intval($libro->ano_publica))
+                                                <option selected value="{{ $ano }}">{{ $ano }}</option>
+                                            @else
+                                                <option value="{{ $ano }}">{{ $ano }}</option>
+                                            @endif
                                         @else
-                                            <option value="{{ $ano }}">{{ $ano }}</option>
-                                        @endif
+                                            @if (old('ano_publica') == '')
+                                                @if ($ano == 2024)
+                                                    <option selected value="{{ $ano }}">{{ $ano }}</option>
+                                                @else
+                                                    <option value="{{ $ano }}">{{ $ano }}</option>
+                                                @endif
+                                            @else
+                                                @if ($ano == old('ano_publica'))
+                                                    <option selected value="{{ $ano }}">{{ $ano }}</option>
+                                                @else
+                                                    <option value="{{ $ano }}">{{ $ano }}</option>
+                                                @endif
+                                            @endif
+                                        @endisset
                                     @endfor
                                 </select>
                             </div>
@@ -103,15 +121,32 @@
                                 <div class="mb-3"></div>
                             @enderror
 
+
                             <div class="input-group">
                                 <label class="input-group-text" for="inputGroupSelect01">Edición (Número):</label>
                                 <select name="edicion" class="form-select" id="inputGroupSelect01">
                                     @for ($edi = 1; $edi < 11; $edi++)
-                                        @if ($edi == 1)
-                                            <option selected value="{{ $edi }}">{{ $edi }}</option>
+                                        @isset($libro)
+                                            @if ($edi == intval($libro->edicion))
+                                                <option selected value="{{ $edi }}">{{ $edi }}</option>
+                                            @else
+                                                <option value="{{ $edi }}">{{ $edi }}</option>
+                                            @endif
                                         @else
-                                            <option value="{{ $edi }}">{{ $edi }}</option>
-                                        @endif
+                                            @if (old('edicion') == '')
+                                                @if ($edi == 1)
+                                                    <option selected value="{{ $edi }}">{{ $edi }}</option>
+                                                @else
+                                                    <option value="{{ $edi }}">{{ $edi }}</option>
+                                                @endif
+                                            @else
+                                                @if ($edi == old('edicion'))
+                                                    <option selected value="{{ $edi }}">{{ $edi }}</option>
+                                                @else
+                                                    <option value="{{ $edi }}">{{ $edi }}</option>
+                                                @endif
+                                            @endif
+                                        @endisset
                                     @endfor
                                 </select>
                             </div>
@@ -123,16 +158,33 @@
                                 <div class="mb-3"></div>
                             @enderror
 
+
                             <div class="input-group">
                                 <label class="input-group-text" for="inputGroupSelect01">Ejemplares del Libro
                                     (Existentes):</label>
                                 <select name="ejemplares" class="form-select" id="inputGroupSelect01">
                                     @for ($ejemp = 1; $ejemp < 21; $ejemp++)
-                                        @if ($ejemp == 1)
-                                            <option selected value="{{ $ejemp }}">{{ $ejemp }}</option>
+                                        @isset($libro)
+                                            @if ($ejemp == intval($libro->ejemplares))
+                                                <option selected value="{{ $ejemp }}">{{ $ejemp }}</option>
+                                            @else
+                                                <option value="{{ $ejemp }}">{{ $ejemp }}</option>
+                                            @endif
                                         @else
-                                            <option value="{{ $ejemp }}">{{ $ejemp }}</option>
-                                        @endif
+                                            @if (old('ejemplares') == '')
+                                                @if ($ejemp == 1)
+                                                    <option selected value="{{ $ejemp }}">{{ $ejemp }}</option>
+                                                @else
+                                                    <option value="{{ $ejemp }}">{{ $ejemp }}</option>
+                                                @endif
+                                            @else
+                                                @if ($ejemp == old('ejemplares'))
+                                                    <option selected value="{{ $ejemp }}">{{ $ejemp }}</option>
+                                                @else
+                                                    <option value="{{ $ejemp }}">{{ $ejemp }}</option>
+                                                @endif
+                                            @endif
+                                        @endisset
                                     @endfor
                                 </select>
                             </div>
@@ -144,17 +196,34 @@
                                 <div class="mb-3"></div>
                             @enderror
 
+
                             <div class="input-group">
                                 <label class="input-group-text" for="inputGroupSelect01">Ejemplares del Libro
                                     (Disponibles):</label>
                                 <select name="disponibles" class="form-select" id="inputGroupSelect01">
                                     <option selected>Seleccione...</option>
                                     @for ($dispon = 1; $dispon < 21; $dispon++)
-                                        @if ($dispon == 1)
-                                            <option selected value="{{ $dispon }}">{{ $dispon }}</option>
+                                        @isset($libro)
+                                            @if ($dispon == intval($libro->disponibles))
+                                                <option selected value="{{ $dispon }}">{{ $dispon }}</option>
+                                            @else
+                                                <option value="{{ $dispon }}">{{ $dispon }}</option>
+                                            @endif
                                         @else
-                                            <option value="{{ $dispon }}">{{ $dispon }}</option>
-                                        @endif
+                                            @if (old('disponibles') == '')
+                                                @if ($dispon == 1)
+                                                    <option selected value="{{ $dispon }}">{{ $dispon }}</option>
+                                                @else
+                                                    <option value="{{ $dispon }}">{{ $dispon }}</option>
+                                                @endif
+                                            @else
+                                                @if ($dispon == old('disponibles'))
+                                                    <option selected value="{{ $dispon }}">{{ $dispon }}</option>
+                                                @else
+                                                    <option value="{{ $dispon }}">{{ $dispon }}</option>
+                                                @endif
+                                            @endif
+                                        @endisset
                                     @endfor
                                 </select>
                             </div>
@@ -166,6 +235,7 @@
                                 <div class="mb-3"></div>
                             @enderror
 
+
                             {{-- * Se coloca el campo estatus por defecto en 0 cuando se carga registro --}}
                             <input type="text" name="estatus" value="0" hidden>
 
@@ -175,13 +245,15 @@
 
                         <div class="col-4 mt-2 text-center">
                             <div class="d-flex justify-content-center">
-                                <img class="imagen-libro" src="/libs/img/ejemplo.png" alt="carátula del libro" />
+                                <img class="imagen-libro" id="ImagenLibro" src="/libs/img/no_disponible.png"
+                                    alt="carátula del libro" />
                             </div>
 
                             <div class="mt-2">
                                 <label for="formFileSm" class="form-label">Carátula: </label>
                                 <input name="caratula" class="form-control form-control-sm" id="formFileSm"
-                                    type="file" accept=".jpg, .jpeg, .png, image/*">
+                                    type="file" accept=".jpg, .jpeg, .png, image/*" value=""
+                                    onchange="mostrarImagen(event)">
                                 @error('caratula')
                                     <small class="text-danger mt-0 mb-1">
                                         <strong>{{ $message }}</strong>

@@ -46,6 +46,19 @@ class LibroController extends Controller
             'disponibles.required' => '* número de ejemplares existentes disponibles es requerido *',
             'disponibles.lte' => '* ejemplares disponibles no puede ser mayor a los existentes *'
         ]);
+        
+        $libro = Libro::create($request->all());
+
+        if ($request->hasFile('caratula')) {
+            $originalFileName = $request->file('caratula')->getClientOriginalExtension();
+            $newFileName = $libro->id . '.' . $originalFileName; // Asume que $registroId contiene el ID del registro
+            $rutaArchivo = $request->file('caratula')->storeAs('img', $newFileName, 'public');
+
+            $libro->caratula = 'img/' . $newFileName;
+            $libro->save();
+        }
+
+        return redirect()->route('libros.index')->with('success', 'Libro cargado exitosamente');
     }
 
     /**

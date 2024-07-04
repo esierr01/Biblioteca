@@ -62,7 +62,7 @@
                                 <td class="text-primary" width="50px">{{ $libro->titulo }}</td>
                                 <td class="text-center">
                                     <a href="{{ $libro->caratula }}" target="_blank">
-                                        <img class="portada-libro" src="{{ $libro->caratula }}" alt="Title" />
+                                        <img class="portada-libro" src="{{ asset('storage') . '/' . $libro->caratula }}" alt="Title" />
                                     </a>
                                     
                                 </td>

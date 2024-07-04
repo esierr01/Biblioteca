@@ -22,7 +22,7 @@ return new class extends Migration
             $table->smallInteger('edicion');
             $table->smallInteger('ejemplares');
             $table->smallInteger('disponibles');
-            $table->date('fecha_eliminado');
+            $table->date('fecha_eliminado')->nullable();
 
             $table->timestamps();
         });
