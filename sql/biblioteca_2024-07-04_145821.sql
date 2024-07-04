@@ -163,7 +163,7 @@ CREATE TABLE `libros` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -171,7 +171,7 @@ CREATE TABLE `libros` (
 --
 
 /*!40000 ALTER TABLE `libros` DISABLE KEYS */;
-INSERT INTO `libros` VALUES (1,0,'img/1.png','Super Mario Bross',2013,'Nintendo',4,3,2,NULL,'2024-07-04 07:35:24','2024-07-04 07:35:24'),(2,0,'img/2.png','.Net Framework',2020,'Notes for Professional',7,18,14,NULL,'2024-07-04 07:38:02','2024-07-04 07:38:02'),(3,0,'img/3.jpg','Cosa rara',2024,'Juan Garcia',1,1,1,NULL,'2024-07-04 07:38:53','2024-07-04 07:38:53');
+INSERT INTO `libros` VALUES (1,0,'img/1.png','Algoritmos',2020,'Notes for Professional',3,3,2,NULL,'2024-07-04 21:23:46','2024-07-04 21:23:47'),(2,0,'img/2.png','Android',2022,'Notes for Professional',1,7,7,NULL,'2024-07-04 21:24:19','2024-07-04 21:24:19'),(3,0,'img/3.png','PostgreSQL',2020,'Notes for Professional',1,2,1,NULL,'2024-07-04 21:28:07','2024-07-04 22:31:30'),(4,0,'img/4.png','Los Vengadores',2024,'El Loco de eloquent',1,1,1,NULL,'2024-07-04 22:47:19','2024-07-04 22:47:19');
 /*!40000 ALTER TABLE `libros` ENABLE KEYS */;
 
 --
@@ -244,7 +244,7 @@ CREATE TABLE `sessions` (
 --
 
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('dfK438KerJz13CtCPBrlIjELTbQz8GMyPaZFqS1K',1,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoibzNFWUJlaWlKSmVRT2s5NGJhbnZUdzh5eUlRNTZTU210NWNINzlTMSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czozNToiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2xpYnJvcy9jcmVhdGUiO31zOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czoyODoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2xpYnJvcyI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==',1720064334);
+INSERT INTO `sessions` VALUES ('PBXbFotBPkJFccAnwyYetFF0abYyY853XGqRS4Qe',1,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36','YTo0OntzOjY6Il90b2tlbiI7czo0MDoiaWhZSmJvQllhTlNEUUlna3B6Q1V6Z0Z4d1hJNnVLcjBVWXJNUEtBTiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9saWJyb3MiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=',1720118876);
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 
 --
@@ -273,7 +273,7 @@ CREATE TABLE `users` (
 --
 
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Zena Legros V','emmanuel.sierra@gmail.com','2024-07-04 07:34:31','$2y$12$Npa7Ae7ubp8xRFkjTwTfeegFVwebvVakFj8hOhqr9fDPQU/S8jxH.','9X57XeLDpX','2024-07-04 07:34:32','2024-07-04 07:34:32');
+INSERT INTO `users` VALUES (1,'Zena Legros V','emmanuel.sierra@gmail.com','2024-07-04 07:34:31','$2y$12$Npa7Ae7ubp8xRFkjTwTfeegFVwebvVakFj8hOhqr9fDPQU/S8jxH.','fVIXpG84s7KfB45dpjPtBNVHNHgmtoFaYUGAiIrtE0G1PhkoAlu6Mpl0x7Nu','2024-07-04 07:34:32','2024-07-04 07:34:32');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 --
@@ -289,4 +289,4 @@ INSERT INTO `users` VALUES (1,'Zena Legros V','emmanuel.sierra@gmail.com','2024-
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-03 23:40:23
+-- Dump completed on 2024-07-04 14:58:34
