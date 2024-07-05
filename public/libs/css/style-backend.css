@@ -101,6 +101,12 @@ table td {
     width: 11em;
     height: 14em;
 }
+
+.dropdown-menu li a:hover {
+    background-color: #22577a;
+    color: #fff;
+}
+
 /** Configuración Responsive */
 
 @media screen and (max-width: 780px) {

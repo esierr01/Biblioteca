@@ -22,7 +22,7 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">ELIMINADOS</a></li>
+                        <li><a class="dropdown-item" href="{{ route('libros.index_eliminados') }}">ELIMINADOS</a></li>
                     </ul>
                 </li>
 

@@ -54,7 +54,7 @@ function mostrarImagen(event) {
 }
 
 //* Validación de los input del form de libros
-document.getElementById('enviarBtn').addEventListener('click', function(event) {
+document.getElementById('enviarBtn').addEventListener('click', function (event) {
     var ejemplares = document.getElementById('ejemplares').value;
     var disponibles = document.getElementById('disponibles').value;
     var titulo = document.getElementById('titulo').value;
@@ -88,14 +88,3 @@ document.getElementById('enviarBtn').addEventListener('click', function(event) {
     }
 });
 
-let btnEliminar = document.querySelector('#btnEliminar');
-let lbl_nombre = document.querySelector('#lbl_nombre');
-window.setInfo = (id, nombre) => {
-    btnEliminar.setAttribute('data-id', id);
-    lbl_nombre.innerHTML = 'El Libro: <b> '+nombre+'</b>';
-}
-btnEliminar.addEventListener('click', ()=>{
-    let id = btnEliminar.getAttribute('data-id');
-    let form = document.querySelector('#frm_'+id);
-    form.submit();
-});

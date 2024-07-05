@@ -17,6 +17,12 @@ class LibroController extends Controller
         return view('modules.libros.index', compact('libros'));
     }
 
+    public function index_eliminados()
+    {
+        $libros = Libro::where('estatus', 1)->get();
+        return view('modules.libros.index_eliminados', compact('libros'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -31,7 +37,7 @@ class LibroController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        
+
         $libro = Libro::create($request->all());
 
         if ($request->hasFile('caratula')) {
@@ -71,7 +77,7 @@ class LibroController extends Controller
             Storage::disk('public')->delete($libro->caratula);
 
             $originalFileName = $request->file('caratula')->getClientOriginalExtension();
-            $newFileName = $libro->id . '.' . $originalFileName; 
+            $newFileName = $libro->id . '.' . $originalFileName;
             $rutaArchivo = $request->file('caratula')->storeAs('img', $newFileName, 'public');
 
             $libro->caratula = 'img/' . $newFileName;
@@ -88,6 +94,20 @@ class LibroController extends Controller
      */
     public function destroy(Libro $libro)
     {
-        
+        if ($libro->estatus == 0) {
+            if ($libro->ejemplares == $libro->disponibles) {
+                $libro->estatus = 1;
+                $libro->fecha_eliminado = date('y-m-d H:i:s');
+                $libro->save();
+                return redirect()->route('libros.index')->with('success', 'Libro seleccionado fue eliminado');
+            } else {
+                return redirect()->route('libros.index')->with('msg_error', 'Libro seleccionado no puede ser eliminado, porque tiene prestamos pendientes');
+            }
+        } else {
+            $libro->estatus = 0;
+            $libro->fecha_eliminado = null;
+            $libro->save();
+            return redirect()->route('libros.index_eliminados')->with('success', 'Libro seleccionado fue restaurado con exito');
+        }
     }
 }

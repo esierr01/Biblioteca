@@ -14,9 +14,10 @@ Route::post('/login', [InterfaceController::class, 'valida_login'])->name('inter
 Route::post('signout', [InterfaceController::class, 'signout'])->name('signout');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('index_menu', function(){
+    Route::get('index_menu', function () {
         return view('modules.index');
     })->name('index_menu');
 
     Route::resource('libros', LibroController::class);
+    Route::get('/libros_eliminados', [LibroController::class, 'index_eliminados'])->name('libros.index_eliminados');
 });
