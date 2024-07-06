@@ -36,11 +36,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="row col-12">
-                    <div class="col-6 mt-1"><span class="titulo-index">Libros Existentes</span></div>
-                    <div class="col-6 d-flex justify-content-end">
-                        <a class="btn btn-blue mx-1" href="{{ route('libros.create') }}"><i
-                                class="fa-solid fa-circle-plus"></i> Incluir Nuevo Libro</a>
-                    </div>
+                    <div class="col-12 mt-1 text-center"><span class="titulo-index">Clientes Eliminados</span></div>
                 </div>
             </div>
 
@@ -48,74 +44,50 @@
                 <table id="tabla" class="table table-striped" style="width: 100%">
                     <thead>
                         <tr>
-                            <th>Título</th>
-                            <th>Carátula</th>
-                            <th>Publicación</th>
-                            <th>Autor</th>
-                            <th>Edición</th>
-                            <th>Ejemplares</th>
-                            <th>Disponibles</th>
+                            <th>Nombre</th>
+                            <th>Teléfonos</th>
+                            <th>Correo</th>
                             <th>Fecha Carga</th>
-                            <th>Acciones</th>
+                            <th style="text-align: center">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($libros as $libro)
+                        @foreach ($clientes as $cliente)
                             <tr>
-                                <td class="text-primary" width="50px">{{ $libro->titulo }}</td>
-                                <td class="text-center">
-                                    @if ($libro->caratula != '')
-                                        <a href="{{ asset('storage') . '/' . $libro->caratula }}" target="_blank">
-                                            <img class="portada-libro" src="{{ asset('storage') . '/' . $libro->caratula }}"
-                                                alt="Title" />
-                                        </a>
-                                    @else
-                                        <a href="{{ asset('libs/img/no_disponible.png') }}" target="_blank">
-                                            <img class="portada-libro" src="{{ asset('libs/img/no_disponible.png') }}"
-                                                alt="Title" />
-                                        </a>
-                                    @endif
-                                </td>
-                                <td class="text-center">{{ $libro->ano_publica }}</td>
-                                <td width="30px">{{ $libro->autor }}</td>
-                                <td class="text-center" width="20px">{{ $libro->edicion }}</td>
-                                <td class="text-center" width="20px">{{ $libro->ejemplares }}</td>
-                                <td class="text-center" width="20px">{{ $libro->disponibles }}</td>
-                                <td width="20px">{{ $libro->created_at }}</td>
-                                <td>
+                                <td class="text-danger">{{ $cliente->nombre }}</td>
+                                <td>{{ $cliente->telefonos }}</td>
+                                <td>{{ $cliente->correo }}</td>
+                                <td>{{ $cliente->created_at }}</td>
+                                <td style="width: 18em; text-align: center">
                                     <div class="btn-group" role="group">
-                                        <a href="{{ route('libros.edit', $libro->id) }}" type="button"
-                                            class="btn btn-sm btn-blue">Editar</a>
-
-                                        <form action="{{ route('libros.destroy', $libro->id) }}" method="POST">
+                                        <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST">
 
                                             @method('DELETE')
                                             @csrf
 
                                             <button type="button" class="btn btn-sm btn-red" data-bs-toggle="modal"
-                                                data-bs-target="#modalConfirmacion_{{ $libro->id }}">
-                                                Eliminar
+                                                data-bs-target="#modalConfirmacion_{{ $cliente->id }}">
+                                                Restaurar Cliente
                                             </button>
 
-                                            <div class="modal" id="modalConfirmacion_{{ $libro->id }}">
+                                            <div class="modal" id="modalConfirmacion_{{ $cliente->id }}">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content custom-fondo">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title">¿Seguro que desea eliminar?</h5>
+                                                            <h5 class="modal-title">¿Seguro que desea restaurar?</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                 aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <p class="text-center">
-                                                                <strong><label>El libro: {{ $libro->titulo }}, del autor:
-                                                                        {{ $libro->autor }}</label></strong>
+                                                                <strong><label>El Cliente: {{ $cliente->nombre }}</label></strong>
                                                             </p>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-info"
                                                                 data-bs-dismiss="modal">Cancelar</button>
                                                             <button type="submit" class="btn btn-danger">Sí,
-                                                                Borrar</button>
+                                                                Restaurar</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -132,5 +104,7 @@
             </div>
         </div>
     </div>
+
+
 
 @endsection

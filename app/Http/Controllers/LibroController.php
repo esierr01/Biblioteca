@@ -8,9 +8,6 @@ use Illuminate\Support\Facades\Storage;
 
 class LibroController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $libros = Libro::where('estatus', 0)->get();
@@ -23,17 +20,11 @@ class LibroController extends Controller
         return view('modules.libros.index_eliminados', compact('libros'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('modules.libros.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         // dd($request->all());
@@ -52,29 +43,26 @@ class LibroController extends Controller
         return redirect()->route('libros.index')->with('success', 'Libro cargado exitosamente');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Libro $libro)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Libro $libro)
     {
         return view('modules.libros.editar', compact('libro'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Libro $libro)
     {
         if ($request->hasFile('caratula')) {
-            Storage::disk('public')->delete($libro->caratula);
+            if ($libro->caratula) {
+                // Verifica si el archivo existe en el disco 'public'
+                if (Storage::disk('public')->exists($libro->caratula)) {
+                    // Si el archivo existe, lo elimina
+                    Storage::disk('public')->delete($libro->caratula);
+                }
+            }
 
             $originalFileName = $request->file('caratula')->getClientOriginalExtension();
             $newFileName = $libro->id . '.' . $originalFileName;
@@ -89,9 +77,6 @@ class LibroController extends Controller
         return redirect()->route('libros.index')->with('success', 'Libro actualizado exitosamente');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Libro $libro)
     {
         if ($libro->estatus == 0) {

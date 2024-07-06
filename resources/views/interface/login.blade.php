@@ -8,20 +8,8 @@
     @include('modules.partials.nav-bloqueado')
 @endsection
 
-@section('opcional')
-    
-@endsection
-
 @section('css')
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('libs/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('libs/css/style-interface.css') }}">
-@endsection
-
-@section('js')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/5f0926b9a9.js" crossorigin="anonymous"></script>
-    <script src="{{ asset('libs/js/main-interface.js') }}"></script>
 @endsection
 
 @section('content')

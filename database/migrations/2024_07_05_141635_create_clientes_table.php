@@ -11,17 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('libros', function (Blueprint $table) {
+        Schema::create('clientes', function (Blueprint $table) {
             $table->id();
 
             $table->boolean('estatus');
-            $table->string('caratula', 120)->nullable();
-            $table->string('titulo', 120);
-            $table->year('ano_publica');
-            $table->string('autor', 120);
-            $table->smallInteger('edicion');
-            $table->smallInteger('ejemplares');
-            $table->smallInteger('disponibles');
+            $table->string('nombre', 120);
+            $table->string('telefonos', 120);
+            $table->string('correo', 120);
             $table->date('fecha_eliminado')->nullable();
 
             $table->timestamps();
@@ -33,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('libros');
+        Schema::dropIfExists('clientes');
     }
 };

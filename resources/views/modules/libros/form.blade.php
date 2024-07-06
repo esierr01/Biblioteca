@@ -7,27 +7,11 @@
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.2/css/responsive.bootstrap5.css">
-    <link rel="stylesheet" href="{{ asset('libs/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('libs/css/style-backend.css') }}">
 @endsection
 
 @section('js')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/5f0926b9a9.js" crossorigin="anonymous"></script>
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-
-    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
-    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.js"></script>
-
-    <script src="https://cdn.datatables.net/responsive/3.0.2/js/dataTables.responsive.js"></script>
-    <script src="https://cdn.datatables.net/responsive/3.0.2/js/responsive.bootstrap5.js"></script>
-
-    <script src="{{ asset('libs/js/main-interface.js') }}"></script>
+    <script src="{{ asset('libs/js/main-form_lib.js') }}"></script>
 @endsection
 
 @section('content')
@@ -162,32 +146,43 @@
                             <div class="input-group mt-3">
                                 <label class="input-group-text" for="inputGroupSelect01">Ejemplares del Libro
                                     (Disponibles):</label>
-                                <select id="disponibles" name="disponibles" class="form-select" id="inputGroupSelect01">
-                                    <option selected>Seleccione...</option>
-                                    @for ($dispon = 1; $dispon < 21; $dispon++)
-                                        @isset($libro)
+
+                                @if ($libro)
+                                    <select id="disponibles" name="disponibles" class="form-select" id="inputGroupSelect01" disabled>
+                                        <option selected>Seleccione...</option>
+                                        @for ($dispon = 1; $dispon < 21; $dispon++)
                                             @if ($dispon == intval($libro->disponibles))
                                                 <option selected value="{{ $dispon }}">{{ $dispon }}</option>
                                             @else
                                                 <option value="{{ $dispon }}">{{ $dispon }}</option>
                                             @endif
-                                        @else
+                                        @endfor
+                                    </select>
+                                @else
+                                    <select id="disponibles" name="disponibles" class="form-select" id="inputGroupSelect01">
+                                        <option selected>Seleccione...</option>
+                                        @for ($dispon = 1; $dispon < 21; $dispon++)
                                             @if (old('disponibles') == '')
                                                 @if ($dispon == 1)
-                                                    <option selected value="{{ $dispon }}">{{ $dispon }}</option>
+                                                    <option selected value="{{ $dispon }}">{{ $dispon }}
+                                                    </option>
                                                 @else
                                                     <option value="{{ $dispon }}">{{ $dispon }}</option>
                                                 @endif
                                             @else
                                                 @if ($dispon == old('disponibles'))
-                                                    <option selected value="{{ $dispon }}">{{ $dispon }}</option>
+                                                    <option selected value="{{ $dispon }}">{{ $dispon }}
+                                                    </option>
                                                 @else
                                                     <option value="{{ $dispon }}">{{ $dispon }}</option>
                                                 @endif
                                             @endif
-                                        @endisset
-                                    @endfor
-                                </select>
+                                        @endfor
+                                    </select>
+                                @endif
+
+
+
                             </div>
                             <span id="errorDisponible"></span>
 
@@ -201,33 +196,35 @@
                         <div class="col-4 mt-2 text-center">
                             <div class="d-flex justify-content-center">
                                 @isset($libro)
-                                    <img class="imagen-libro" id="ImagenLibro" src="{{ asset('storage') . '/' . $libro->caratula }}"
-                                alt="carátula del libro" />
+                                    @if ($libro->caratula != '')
+                                        <img class="imagen-libro" src="{{ asset('storage') . '/' . $libro->caratula }}"
+                                            alt="Title" />
+                                    @else
+                                        <img class="imagen-libro" id="ImagenLibro" src="/libs/img/no_disponible.png"
+                                            alt="carátula del libro" />
+                                    @endif
                                 @else
                                     <img class="imagen-libro" id="ImagenLibro" src="/libs/img/no_disponible.png"
-                                alt="carátula del libro" />
+                                        alt="carátula del libro" />
                                 @endisset
-                                
+
                             </div>
 
                             <div class="mt-2">
-                                <label for="formFileSm" class="form-label">Carátula: </label>
-                                <input name="caratula" class="form-control form-control-sm" id="formFileSm"
+                                <label for="caratula" class="form-label">Carátula: </label>
+                                <input name="caratula" class="form-control form-control-sm" id="caratula"
                                     type="file" accept=".jpg, .jpeg, .png, image/*" value=""
-                                    onchange="mostrarImagen(event)" @isset($libro) value="{{ $libro->titulo }}" @endisset>
-
-                                    
-                                {{-- @error('caratula')
-                                    <small class="text-danger mt-0 mb-1">
-                                        <strong>{{ $message }}</strong>
-                                    </small>
-                                @else
-                                    <div class="mb-3"></div>
-                                @enderror --}}
+                                    onchange="mostrarImagen(event)"
+                                    @isset($libro) value="{{ $libro->titulo }}" @endisset>
+                                <span id="errorCaratula"></span>
                             </div>
                         </div>
                     </div>
                 </div>
         </form>
+
+
     </div>
+
+
 @endsection

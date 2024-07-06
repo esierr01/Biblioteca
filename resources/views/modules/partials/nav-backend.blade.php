@@ -32,26 +32,16 @@
                         CLIENTES
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">ACTIVOS</a></li>
+                        <li><a class="dropdown-item" href="{{ route('clientes.index') }}">ACTIVOS</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">ELIMINADOS</a></li>
+                        <li><a class="dropdown-item" href="{{ route('clientes.index_eliminados') }}">ELIMINADOS</a></li>
                     </ul>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        PRESTAMOS
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">ACTIVOS</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">CERRADOS</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('prestamos.index') }}">PRESTAMOS</a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -60,12 +50,14 @@
                         SISTEMA
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">GESTION USUARIOS</a></li>
+                        <li><a class="dropdown-item" href="{{ route('users.index') }}">GESTION USUARIOS</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item" href="{{ route('signout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">CERRAR SESION</a>
+                            <a class="dropdown-item" href="{{ route('signout') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">CERRAR
+                                SESION</a>
                             <form id="logout-form" action="{{ route('signout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
@@ -74,7 +66,7 @@
                     </ul>
                 </li>
 
-{{-- 
+                {{-- 
 
 
 

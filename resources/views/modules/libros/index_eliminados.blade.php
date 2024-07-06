@@ -7,27 +7,7 @@
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.2/css/responsive.bootstrap5.css">
-    <link rel="stylesheet" href="{{ asset('libs/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('libs/css/style-backend.css') }}">
-@endsection
-
-@section('js')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/5f0926b9a9.js" crossorigin="anonymous"></script>
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-
-    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
-    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.js"></script>
-
-    <script src="https://cdn.datatables.net/responsive/3.0.2/js/dataTables.responsive.js"></script>
-    <script src="https://cdn.datatables.net/responsive/3.0.2/js/responsive.bootstrap5.js"></script>
-
-    <script src="{{ asset('libs/js/main-interface.js') }}"></script>
 @endsection
 
 @section('content')
@@ -56,7 +36,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="row col-12">
-                    <div class="col-6 offset-3 mt-1"><span class="titulo-index">Libros Eliminados</span></div>
+                    <div class="col-12 mt-1 text-center"><span class="titulo-index">Libros Eliminados</span></div>
                 </div>
             </div>
 
@@ -78,13 +58,19 @@
                     <tbody>
                         @foreach ($libros as $libro)
                             <tr>
-                                <td class="text-primary" width="50px">{{ $libro->titulo }}</td>
+                                <td class="text-danger" width="50px">{{ $libro->titulo }}</td>
                                 <td class="text-center">
-                                    <a href="{{ asset('storage') . '/' . $libro->caratula }}" target="_blank">
-                                        <img class="portada-libro" src="{{ asset('storage') . '/' . $libro->caratula }}"
-                                            alt="Title" />
-                                    </a>
-                                </td>
+                                    @if ($libro->caratula != '')
+                                        <a href="{{ asset('storage') . '/' . $libro->caratula }}" target="_blank">
+                                            <img class="portada-libro" src="{{ asset('storage') . '/' . $libro->caratula }}"
+                                                alt="Title" />
+                                        </a>
+                                    @else
+                                        <a href="{{ asset('libs/img/no_disponible.png') }}" target="_blank">
+                                            <img class="portada-libro"
+                                                src="{{ asset('libs/img/no_disponible.png') }}" alt="Title" />
+                                        </a>
+                                    @endif
                                 <td class="text-center">{{ $libro->ano_publica }}</td>
                                 <td width="30px">{{ $libro->autor }}</td>
                                 <td class="text-center" width="20px">{{ $libro->edicion }}</td>

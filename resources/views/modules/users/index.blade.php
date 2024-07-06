@@ -36,10 +36,10 @@
         <div class="card">
             <div class="card-header">
                 <div class="row col-12">
-                    <div class="col-6 mt-1"><span class="titulo-index">Libros Existentes</span></div>
+                    <div class="col-6 mt-1"><span class="titulo-index">Usuarios (ADMIN) del Sistema</span></div>
                     <div class="col-6 d-flex justify-content-end">
-                        <a class="btn btn-blue mx-1" href="{{ route('libros.create') }}"><i
-                                class="fa-solid fa-circle-plus"></i> Incluir Nuevo Libro</a>
+                        <a class="btn btn-blue mx-1" href="{{ route('users.create') }}"><i
+                                class="fa-solid fa-circle-plus"></i> Incluir Nuevo Usuario (ADMIN)</a>
                     </div>
                 </div>
             </div>
@@ -48,56 +48,31 @@
                 <table id="tabla" class="table table-striped" style="width: 100%">
                     <thead>
                         <tr>
-                            <th>Título</th>
-                            <th>Carátula</th>
-                            <th>Publicación</th>
-                            <th>Autor</th>
-                            <th>Edición</th>
-                            <th>Ejemplares</th>
-                            <th>Disponibles</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
                             <th>Fecha Carga</th>
-                            <th>Acciones</th>
+                            <th width="100px">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($libros as $libro)
+                        @foreach ($users as $user)
                             <tr>
-                                <td class="text-primary" width="50px">{{ $libro->titulo }}</td>
-                                <td class="text-center">
-                                    @if ($libro->caratula != '')
-                                        <a href="{{ asset('storage') . '/' . $libro->caratula }}" target="_blank">
-                                            <img class="portada-libro" src="{{ asset('storage') . '/' . $libro->caratula }}"
-                                                alt="Title" />
-                                        </a>
-                                    @else
-                                        <a href="{{ asset('libs/img/no_disponible.png') }}" target="_blank">
-                                            <img class="portada-libro" src="{{ asset('libs/img/no_disponible.png') }}"
-                                                alt="Title" />
-                                        </a>
-                                    @endif
-                                </td>
-                                <td class="text-center">{{ $libro->ano_publica }}</td>
-                                <td width="30px">{{ $libro->autor }}</td>
-                                <td class="text-center" width="20px">{{ $libro->edicion }}</td>
-                                <td class="text-center" width="20px">{{ $libro->ejemplares }}</td>
-                                <td class="text-center" width="20px">{{ $libro->disponibles }}</td>
-                                <td width="20px">{{ $libro->created_at }}</td>
+                                <td class="text-primary">{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->created_at }}</td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <a href="{{ route('libros.edit', $libro->id) }}" type="button"
-                                            class="btn btn-sm btn-blue">Editar</a>
-
-                                        <form action="{{ route('libros.destroy', $libro->id) }}" method="POST">
+                                        <form action="{{ route('users.destroy', $user->id) }}" method="POST">
 
                                             @method('DELETE')
                                             @csrf
 
                                             <button type="button" class="btn btn-sm btn-red" data-bs-toggle="modal"
-                                                data-bs-target="#modalConfirmacion_{{ $libro->id }}">
+                                                data-bs-target="#modalConfirmacion_{{ $user->id }}">
                                                 Eliminar
                                             </button>
 
-                                            <div class="modal" id="modalConfirmacion_{{ $libro->id }}">
+                                            <div class="modal" id="modalConfirmacion_{{ $user->id }}">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content custom-fondo">
                                                         <div class="modal-header">
@@ -107,8 +82,8 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <p class="text-center">
-                                                                <strong><label>El libro: {{ $libro->titulo }}, del autor:
-                                                                        {{ $libro->autor }}</label></strong>
+                                                                <strong><label>El usuario: {{ $user->name }}, con el correo:
+                                                                    {{ $user->email }}</label></strong>
                                                             </p>
                                                         </div>
                                                         <div class="modal-footer">
@@ -132,5 +107,7 @@
             </div>
         </div>
     </div>
+
+
 
 @endsection

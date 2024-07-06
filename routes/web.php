@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\ClienteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Interface\InterfaceController;
 use App\Http\Controllers\LibroController;
+use App\Http\Controllers\PrestamoController;
+use App\Http\Controllers\UserController;
 
 //* Rutas sin protección:
 
@@ -20,4 +23,12 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('libros', LibroController::class);
     Route::get('/libros_eliminados', [LibroController::class, 'index_eliminados'])->name('libros.index_eliminados');
+
+    Route::resource('clientes', ClienteController::class);
+    Route::get('/clientes_eliminados', [ClienteController::class, 'index_eliminados'])->name('clientes.index_eliminados');
+
+    Route::resource('prestamos', PrestamoController::class);
+
+    Route::resource('users', UserController::class);
+
 });
