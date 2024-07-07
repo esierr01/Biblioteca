@@ -32,9 +32,19 @@ class LibroController extends Controller
         $libro = Libro::create($request->all());
 
         if ($request->hasFile('caratula')) {
-            $originalFileName = $request->file('caratula')->getClientOriginalExtension();
-            $newFileName = $libro->id . '.' . $originalFileName; // Asume que $registroId contiene el ID del registro
+            $originalFileName = $request->file('caratula')->getClientOriginalName(); // Corrección aquí
+            $newFileName = $libro->id . '.' . $request->file('caratula')->getClientOriginalExtension();
             $rutaArchivo = $request->file('caratula')->storeAs('img', $newFileName, 'public');
+
+            $libro->caratula = 'img/' . $newFileName;
+            $libro->save();
+        } else {
+            $newFileName = $libro->id . '.png';
+            $defaultImagePath = public_path('libs/img/no_disponible.png');
+            $destinationPath = storage_path('app/public/img/'.$newFileName);
+            // Copia la imagen
+            copy($defaultImagePath, $destinationPath);
+
 
             $libro->caratula = 'img/' . $newFileName;
             $libro->save();

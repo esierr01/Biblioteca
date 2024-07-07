@@ -1,21 +1,12 @@
 //* Validación de los input de los form de libros
 document.getElementById('enviarBtn').addEventListener('click', function (event) {
-    var ejemplares = document.getElementById('ejemplares').value;
-    var disponibles = document.getElementById('disponibles').value;
     var titulo = document.getElementById('titulo').value;
     var autor = document.getElementById('autor').value;
+    var ejemplares = document.getElementById('ejemplares').value;
 
-    var errorSpanDisponible = document.getElementById('errorDisponible');
     var errorSpanTitulo = document.getElementById('errorTitulo');
     var errorSpanAutor = document.getElementById('errorAutor');
-
-    if (parseInt(disponibles) > parseInt(ejemplares)) {
-        event.preventDefault(); // Evita el envío del formulario
-        errorSpanDisponible.textContent = 'Los ejemplares disponibles no pueden ser mayores que los existentes';
-        errorSpanDisponible.style.color = 'red'; // Opcional: Cambia el color del mensaje de error
-    } else {
-        errorSpanDisponible.textContent = ''; // Limpia el mensaje de error si la validación es exitosa
-    }
+    var errorSpanEjemplares = document.getElementById('errorEjemplares');
 
     if (titulo.trim() === '') {
         event.preventDefault(); // Evita el envío del formulario
@@ -32,4 +23,30 @@ document.getElementById('enviarBtn').addEventListener('click', function (event) 
     } else {
         errorSpanAutor.textContent = ''; // Limpia el mensaje de error si la validación es exitosa
     }
+
+    if (ejemplares.trim() === '0') {
+        event.preventDefault(); // Evita el envío del formulario
+        errorSpanEjemplares.textContent = 'Se requiere que indique cantidad de ejemplares a cargar';
+        errorSpanEjemplares.style.color = 'red'; // Opcional: Cambia el color del mensaje de error
+    } else {
+        errorSpanEjemplares.textContent = ''; // Limpia el mensaje de error si la validación es exitosa
+    }
+});
+
+document.getElementById('ejemplares').addEventListener('change', function() {
+    var ejemplaresValue = this.value;
+    var disponiblesSelect = document.getElementById('disponibles');
+
+    // Clear the current options
+    disponiblesSelect.innerHTML = '';
+
+    // Add the selected value from the first select as an option
+    var option = document.createElement('option');
+    option.value = ejemplaresValue;
+    option.text = ejemplaresValue;
+    option.selected = true;
+    disponiblesSelect.add(option);
+
+    // Enable the second select
+    disponiblesSelect.disabled = false;
 });

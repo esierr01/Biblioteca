@@ -59,14 +59,14 @@
                         @foreach ($prestamos as $prestamo)
                             <tr style="align-content: center;">
                                 @if ($prestamo->estatus == 0)
-                                    <td class="text-light bg-success text-center">ACTIVO</td>
+                                    <td class="text-light bg-success text-center align-middle">ACTIVO</td>
                                 @else
-                                    <td class="text-light bg-danger text-center">CERRADO</td>
+                                    <td class="text-light bg-danger text-center align-middle">CERRADO</td>
                                 @endif
-                                <td>{{ $prestamo->Libro->titulo }}</td>
-                                <td>{{ $prestamo->Cliente->nombre }}</td>
-                                <td>{{ $prestamo->created_at }}</td>
-                                <td style="width: 18em">
+                                <td class="align-middle">{{ $prestamo->Libro->titulo }}</td>
+                                <td class="align-middle">{{ $prestamo->Cliente->nombre }}</td>
+                                <td class="align-middle">{{ $prestamo->created_at }}</td>
+                                <td class="align-middle" style="width: 18em">
                                     @if ($prestamo->estatus == 0)
                                         <div class="btn-group" role="group">
                                             <form action="{{ route('prestamos.destroy', $prestamo->id) }}" method="POST">

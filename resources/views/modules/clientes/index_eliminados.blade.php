@@ -45,7 +45,7 @@
                     <thead>
                         <tr>
                             <th>Nombre</th>
-                            <th>Teléfonos</th>
+                            <th class="text-center">Teléfonos</th>
                             <th>Correo</th>
                             <th>Fecha Carga</th>
                             <th style="text-align: center">Acciones</th>
@@ -54,11 +54,11 @@
                     <tbody>
                         @foreach ($clientes as $cliente)
                             <tr>
-                                <td class="text-danger">{{ $cliente->nombre }}</td>
-                                <td>{{ $cliente->telefonos }}</td>
-                                <td>{{ $cliente->correo }}</td>
-                                <td>{{ $cliente->created_at }}</td>
-                                <td style="width: 18em; text-align: center">
+                                <td class="text-danger align-middle">{{ $cliente->nombre }}</td>
+                                <td class="align-middle">{{ $cliente->telefonos }}</td>
+                                <td class="align-middle">{{ $cliente->correo }}</td>
+                                <td class="align-middle">{{ $cliente->created_at }}</td>
+                                <td class="align-middle" style="width: 18em; text-align: center">
                                     <div class="btn-group" role="group">
                                         <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST">
 

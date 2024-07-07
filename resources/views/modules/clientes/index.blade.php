@@ -49,7 +49,7 @@
                     <thead>
                         <tr>
                             <th>Nombre</th>
-                            <th>Teléfonos</th>
+                            <th class="text-center">Teléfonos</th>
                             <th>Correo</th>
                             <th>Fecha Carga</th>
                             <th width="100px">Acciones</th>
@@ -58,11 +58,11 @@
                     <tbody>
                         @foreach ($clientes as $cliente)
                             <tr>
-                                <td class="text-primary">{{ $cliente->nombre }}</td>
-                                <td>{{ $cliente->telefonos }}</td>
-                                <td>{{ $cliente->correo }}</td>
-                                <td>{{ $cliente->created_at }}</td>
-                                <td>
+                                <td class="text-primary align-middle">{{ $cliente->nombre }}</td>
+                                <td class="align-middle text-center">{{ $cliente->telefonos }}</td>
+                                <td class="align-middle">{{ $cliente->correo }}</td>
+                                <td class="align-middle">{{ $cliente->created_at }}</td>
+                                <td class="align-middle">
                                     <div class="btn-group" role="group">
                                         <a href="{{ route('clientes.edit', $cliente->id) }}" type="button"
                                             class="btn btn-sm btn-blue">Editar</a>

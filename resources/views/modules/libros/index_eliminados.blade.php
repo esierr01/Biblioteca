@@ -58,7 +58,7 @@
                     <tbody>
                         @foreach ($libros as $libro)
                             <tr>
-                                <td class="text-danger" width="50px">{{ $libro->titulo }}</td>
+                                <td class="text-danger align-middle" width="50px">{{ $libro->titulo }}</td>
                                 <td class="text-center">
                                     @if ($libro->caratula != '')
                                         <a href="{{ asset('storage') . '/' . $libro->caratula }}" target="_blank">
@@ -71,13 +71,13 @@
                                                 src="{{ asset('libs/img/no_disponible.png') }}" alt="Title" />
                                         </a>
                                     @endif
-                                <td class="text-center">{{ $libro->ano_publica }}</td>
-                                <td width="30px">{{ $libro->autor }}</td>
-                                <td class="text-center" width="20px">{{ $libro->edicion }}</td>
-                                <td class="text-center" width="20px">{{ $libro->ejemplares }}</td>
-                                <td class="text-center" width="20px">{{ $libro->disponibles }}</td>
-                                <td width="20px">{{ $libro->fecha_eliminado }}</td>
-                                <td>
+                                <td class="text-center align-middle">{{ $libro->ano_publica }}</td>
+                                <td class="align-middle" width="30px">{{ $libro->autor }}</td>
+                                <td class="text-center align-middle" width="20px">{{ $libro->edicion }}</td>
+                                <td class="text-center align-middle" width="20px">{{ $libro->ejemplares }}</td>
+                                <td class="text-center align-middle" width="20px">{{ $libro->disponibles }}</td>
+                                <td class="align-middle" width="20px">{{ $libro->fecha_eliminado }}</td>
+                                <td class="align-middle">
                                     <div class="btn-group" role="group">
 
                                         <form action="{{ route('libros.destroy', $libro->id) }}" method="POST">

@@ -57,10 +57,10 @@
                     <tbody>
                         @foreach ($users as $user)
                             <tr>
-                                <td class="text-primary">{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->created_at }}</td>
-                                <td>
+                                <td class="text-primary align-middle">{{ $user->name }}</td>
+                                <td class="align-middle">{{ $user->email }}</td>
+                                <td class="align-middle">{{ $user->created_at }}</td>
+                                <td class="align-middle">
                                     <div class="btn-group" role="group">
                                         <form action="{{ route('users.destroy', $user->id) }}" method="POST">
 
