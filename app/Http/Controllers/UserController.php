@@ -18,6 +18,7 @@ class UserController extends Controller
 
     public function create()
     {
+        //* Creamos un nuevo registro con los datos desde el formulario
         return view('modules.users.create');
     }
 
@@ -51,10 +52,13 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
-        $id = Auth::user()->id; //* id del usuario activo
+        //* Función para eliminar un usuario (ADMIN)
 
+        $id = Auth::user()->id; //* configo el id del usuario activo
+
+        //* valido para no borrar el usuario activo 
         if ($user->id === $id) {
-            return redirect()->route('users.index')->with('msg_error', 'No puede borrar el cliente activo actualmente en el sistema');
+            return redirect()->route('users.index')->with('msg_error', 'No puede borrar el Usuario (ADMIN) activo actualmente en el sistema');
         }
 
         User::findOrFail($user->id)->delete();

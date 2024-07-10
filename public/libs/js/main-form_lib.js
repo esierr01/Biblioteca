@@ -1,4 +1,4 @@
-//* Validación de los input de los form de libros
+//* Validación de los input del form de libros
 document.getElementById('enviarBtn').addEventListener('click', function (event) {
     var titulo = document.getElementById('titulo').value;
     var autor = document.getElementById('autor').value;
@@ -33,6 +33,7 @@ document.getElementById('enviarBtn').addEventListener('click', function (event) 
     }
 });
 
+//* Funcion que al seleccionar un valor en select de ejemplares, carga el mismo valor en disponibles
 document.getElementById('ejemplares').addEventListener('change', function() {
     var ejemplaresValue = this.value;
     var disponiblesSelect = document.getElementById('disponibles');

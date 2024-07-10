@@ -9,6 +9,7 @@ class Prestamo extends Model
 {
     use HasFactory;
 
+   //* Campos a llenarse en la tabla
     protected $fillable = ['estatus', 'id_cliente', 'id_libro', 'fecha_devuelto'];
 
     //* para mostrar nombre en lugar de id_cliente

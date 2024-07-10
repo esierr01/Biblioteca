@@ -64,6 +64,7 @@ class InterfaceController extends Controller
 
     public function signout()
     {
+        //* Función para cerrar la sesion e ir a pagina web inicial
         Auth::logout();
         return redirect()->route('interface.index');
     }

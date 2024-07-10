@@ -18,7 +18,7 @@
                         LIBROS
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('libros.index') }}">ACTIVOS</a></li>
+                        <li><a class="dropdown-item" href="{{ route('libros.index') }}">EXISTENTES</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -32,7 +32,7 @@
                         CLIENTES
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('clientes.index') }}">ACTIVOS</a></li>
+                        <li><a class="dropdown-item" href="{{ route('clientes.index') }}">EXISTENTES</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>

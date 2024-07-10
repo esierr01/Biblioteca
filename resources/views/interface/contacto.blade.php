@@ -16,10 +16,10 @@
     <div class="container contenedor-contacto">
         <div class="card col-8 offset-2">
             <div class="row d-flex mx-auto">
-                <div class="col-12 p-5 datos-contacto">
-                    Emmanuel Sierra Pacheco <br><br>
-                    emmanuel.sierra@gmail.com <br><br>
-                    +58 412 6009860
+                <div class="col-12 p-2 datos-contacto">
+                    <p>Emmanuel Sierra Pacheco <br><br>
+                        emmanuel.sierra@gmail.com <br><br>
+                        +58 412 6009860</p>
                 </div>
             </div>
         </div>

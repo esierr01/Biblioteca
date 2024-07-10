@@ -53,8 +53,8 @@
                             <th>Publicación</th>
                             <th>Autor</th>
                             <th>Edición</th>
-                            <th>Ejemplares</th>
-                            <th>Disponibles</th>
+                            <th>Ejemplares existentes</th>
+                            <th>Ejemplares disponibles</th>
                             <th>Fecha Carga</th>
                             <th>Acciones</th>
                         </tr>

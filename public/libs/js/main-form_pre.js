@@ -1,4 +1,4 @@
-//* Validación de los input de los form de libros, clientes
+//* Validación de los input del form de prestamos
 document.getElementById('enviarBtn').addEventListener('click', function (event) {
     var id_libro = document.getElementById('id_libro').value;
     var id_cliente = document.getElementById('id_cliente').value;

@@ -33,6 +33,7 @@ class PrestamoController extends Controller
             return redirect()->route('prestamos.index')->with('msg_error', 'Ya existe un prestamo ACTIVO con este cliente y libro, imposible crear una igual');
         }
 
+        //* Creamos un nuevo registro con los datos desde el formulario
         $prestamo = Prestamo::create($request->all());
 
         //* recuperamos los datos de libros para modificar la disponibilidad despues del prestamo
@@ -59,6 +60,7 @@ class PrestamoController extends Controller
 
     public function destroy(Prestamo $prestamo)
     {
+        //* Función para devolver un libro que esta actualmente prestado (prestamo con estatus = 0)
         $prestamo->estatus = 1;
         $prestamo->fecha_devuelto = date('y-m-d H:i:s');
         $prestamo->save();

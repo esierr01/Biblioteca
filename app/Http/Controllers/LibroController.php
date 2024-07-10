@@ -27,8 +27,7 @@ class LibroController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
-
+        //* Creamos un nuevo registro con los datos desde el formulario
         $libro = Libro::create($request->all());
 
         if ($request->hasFile('caratula')) {
@@ -45,7 +44,6 @@ class LibroController extends Controller
             // Copia la imagen
             copy($defaultImagePath, $destinationPath);
 
-
             $libro->caratula = 'img/' . $newFileName;
             $libro->save();
         }
@@ -60,11 +58,13 @@ class LibroController extends Controller
 
     public function edit(Libro $libro)
     {
+        //* Abrimos el formulario de edicion
         return view('modules.libros.editar', compact('libro'));
     }
 
     public function update(Request $request, Libro $libro)
     {
+        // Verificamos si hay un cambio de carátula para borrar la anterior y copiar la nueva
         if ($request->hasFile('caratula')) {
             if ($libro->caratula) {
                 // Verifica si el archivo existe en el disco 'public'
@@ -82,6 +82,7 @@ class LibroController extends Controller
             $libro->save();
         }
 
+        //* Actualizamos con los datos del formulario
         $libro->update($request->input());
 
         return redirect()->route('libros.index')->with('success', 'Libro actualizado exitosamente');
@@ -89,7 +90,10 @@ class LibroController extends Controller
 
     public function destroy(Libro $libro)
     {
+        //* Función para eliminar / restaurar, si esta con estatus=0 (no eliminado, lo podemos eliminar), si esta con estatus =1 (si eliminado, lo podemos restaurar)
         if ($libro->estatus == 0) {
+
+            //* Verificamos si el libro tiene libros en prestamos (diferencia entre ejemplares y disponibles), si los tiene no se le puede borrar hasta que los libros sean devueltos
             if ($libro->ejemplares == $libro->disponibles) {
                 $libro->estatus = 1;
                 $libro->fecha_eliminado = date('y-m-d H:i:s');

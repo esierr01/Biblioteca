@@ -51,7 +51,7 @@
                             <th>Estatus</th>
                             <th>Libro</th>
                             <th>Cliente</th>
-                            <th>Fecha Prestamo</th>
+                            <th>Fecha</th>
                             <th width="100px">Acciones</th>
                         </tr>
                     </thead>
@@ -65,7 +65,13 @@
                                 @endif
                                 <td class="align-middle">{{ $prestamo->Libro->titulo }}</td>
                                 <td class="align-middle">{{ $prestamo->Cliente->nombre }}</td>
-                                <td class="align-middle">{{ $prestamo->created_at }}</td>
+
+                                @if ($prestamo->estatus == 0)
+                                    <td class="align-middle text-success">Prestamo: {{ $prestamo->created_at }}</td>
+                                @else
+                                    <td class="align-middle text-danger">Devuelto: {{ $prestamo->fecha_devuelto }}</td>
+                                @endif
+                                
                                 <td class="align-middle" style="width: 18em">
                                     @if ($prestamo->estatus == 0)
                                         <div class="btn-group" role="group">

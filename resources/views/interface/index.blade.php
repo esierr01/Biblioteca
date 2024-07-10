@@ -15,15 +15,15 @@
 @section('content')
     <div class="buscar-libros">
         <div class="col-6 offset-3">
-                <form action="{{ route('interface.index') }}" method="GET" class="buscar-libros" value="{{ request('query') }}">
-                    @csrf
-                    <div class="input-group mb-3">
-                        <input type="text" name="query" class="form-control" placeholder="Ingrese Título del Libro a Buscar"
-                            aria-label="Recipient's username" aria-describedby="boton-buscar">
-                        <button class="btn btn-outline-secondary" type="submit" id="boton-buscar"><i
-                                id="icono-bus" class="fa-solid fa-magnifying-glass"></i></button>
-                    </div>
-                </form>
+            <form action="{{ route('interface.index') }}" method="GET" class="buscar-libros" value="{{ request('query') }}">
+                @csrf
+                <div class="input-group mb-3">
+                    <input type="text" name="query" class="form-control" placeholder="Ingrese Título del Libro a Buscar"
+                        aria-label="Recipient's username" aria-describedby="boton-buscar">
+                    <button class="btn btn-outline-secondary" type="submit" id="boton-buscar"><i id="icono-bus"
+                            class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -31,20 +31,18 @@
         <div class="card-container">
 
             @if ($libros->isEmpty())
-            <div class="container text-center mt-4 mb-4">
-                <h2>¡ NO HAY LIBROS DISPONIBLES EN LA BIBLIOTECA !</h2>
-            </div>
+                <div class="container text-center mt-4 mb-4">
+                    <h2>¡ NO HAY LIBROS DISPONIBLES EN LA BIBLIOTECA !</h2>
+                </div>
             @else
                 @foreach ($libros as $libro)
                     <div class="card-item card">
                         <div class="row no-gutters">
                             <div class="col-5">
-                                @if ($libro->caratula != "")
-                                    <img class="card-img-top" src="{{ asset('storage') . '/' . $libro->caratula }}" alt="Title" />                                    
-                                @else
-                                    <img class="card-img-top" src="{{ asset('libs/img/no_disponible.png') }}" alt="Title" />
-                                @endif
-
+                                <a href="{{ asset('storage') . '/' . $libro->caratula }}" target="_blank">
+                                    <img class="card-img-top" src="{{ asset('storage') . '/' . $libro->caratula }}"
+                                        alt="Title" />
+                                </a>
                             </div>
                             <div class="col-7">
                                 <div class="card-body">

@@ -3,7 +3,6 @@
     padding: 0;
     font-family: "Russo One", sans-serif;
     font-weight: 400;
-    /* overflow-x: hidden; */
 }
 body {
     height: 100%;
@@ -101,7 +100,6 @@ table td {
     width: 11em;
     height: 14em;
 }
-
 .dropdown-menu li a:hover {
     background-color: #22577a;
     color: #fff;
@@ -118,13 +116,11 @@ table td {
         font-size: 0.85em;
     }
 }
-
 @media screen and (max-width: 580px) {
     #lenguajes i {
         font-size: 1.2em;
     }
 }
-
 @media screen and (max-width: 500px) {
     #lenguajes i {
         font-size: 1em;

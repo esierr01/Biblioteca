@@ -9,5 +9,6 @@ class Libro extends Model
 {
     use HasFactory;
 
+    //* Campos a llenarse en la tabla
     protected $fillable = ['estatus', 'caratula', 'titulo', 'ano_publica', 'autor', 'edicion', 'ejemplares', 'disponibles', 'fecha_eliminado'];
 }

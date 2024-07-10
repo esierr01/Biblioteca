@@ -1,4 +1,4 @@
-//* Validación de los input de los form de libros, clientes
+//* Validación de los input del form de usuarios
 document.getElementById('enviarBtn').addEventListener('click', function (event) {
     var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
@@ -47,6 +47,7 @@ document.getElementById('enviarBtn').addEventListener('click', function (event) 
 
 });
 
+//* Funcion para mostrar / ocultar caracteres del input password
 $(document).ready(function() {
     $('#boton-ojo').click(function() {
         var inputType = $('#password').attr('type');

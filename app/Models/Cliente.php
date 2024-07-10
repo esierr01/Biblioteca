@@ -9,5 +9,6 @@ class Cliente extends Model
 {
     use HasFactory;
 
+    //* Campos a llenarse en la tabla
     protected $fillable = ['estatus', 'nombre', 'telefonos', 'correo', 'fecha_eliminado'];
 }

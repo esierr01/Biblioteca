@@ -1,4 +1,4 @@
-//* Validación de los input de los form de libros, clientes
+//* Validación de los input del form de clientes
 document.getElementById('enviarBtn').addEventListener('click', function (event) {
     var nombre = document.getElementById('nombre').value;
     var telefonos = document.getElementById('telefonos').value;
@@ -24,14 +24,6 @@ document.getElementById('enviarBtn').addEventListener('click', function (event) 
         errorSpanTelefonos.textContent = ''; // Limpia el mensaje de error si la validación es exitosa
     }
 
-    // if (correo.trim() === '') {
-    //     event.preventDefault(); // Evita el envío del formulario
-    //     errorSpanCorreo.textContent = 'El correo del cliente es requerido para cargarlo';
-    //     errorSpanCorreo.style.color = 'red'; // Opcional: Cambia el color del mensaje de error
-    // } else {
-    //     errorSpanCorreo.textContent = ''; // Limpia el mensaje de error si la validación es exitosa
-    // }
-
     if (correo.trim() === '') {
         event.preventDefault();
         errorSpanCorreo.textContent = 'El correo del cliente es requerido para cargarlo';
@@ -46,5 +38,4 @@ document.getElementById('enviarBtn').addEventListener('click', function (event) 
             errorSpanCorreo.textContent = '';
         }
     }
-
 });

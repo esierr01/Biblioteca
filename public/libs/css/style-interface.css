@@ -114,12 +114,10 @@ footer {
     align-items: center;
     text-align: center;
     max-height: 20em;
+    font-size: 2em;
 }
-.plano-ubicacion {
-    padding: 1em;
-    border: 3 solid #000000;
-    width: 24em;
-    height: 18em;
+.datos-contacto p {
+    font-size: 1.1em;
 }
 
 /** Configuración Responsive */
@@ -130,7 +128,6 @@ footer {
         height: 14em;
     }
 }
-
 @media screen and (max-width: 1000px) {
     .card-item {
         flex: 0 1 calc(50% - 0.5em); 
@@ -164,7 +161,6 @@ footer {
         height: 10em;
     }
 }
-
 @media screen and (max-width: 780px) {
     .card-item {
         flex: 0 1 calc(100% - 0.5em); 
@@ -204,7 +200,6 @@ footer {
         box-sizing: border-box; 
     }
 }
-
 @media screen and (max-width: 500px) {
     .contenedor-titulo {
         font-size: 1.9em;
@@ -235,7 +230,6 @@ footer {
         height: 8em;
     }
 }
-
 @media screen and (max-width: 380px) {
     .buscar-libros {
         margin-top: 3em;

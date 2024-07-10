@@ -60,6 +60,34 @@ CREATE TABLE `cache_locks` (
 /*!40000 ALTER TABLE `cache_locks` ENABLE KEYS */;
 
 --
+-- Table structure for table `clientes`
+--
+
+DROP TABLE IF EXISTS `clientes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `clientes` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `estatus` tinyint(1) NOT NULL,
+  `nombre` varchar(120) NOT NULL,
+  `telefonos` varchar(120) NOT NULL,
+  `correo` varchar(120) NOT NULL,
+  `fecha_eliminado` date DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `clientes`
+--
+
+/*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
+INSERT INTO `clientes` VALUES (1,0,'Pedro Perez','+58500362366','pedro@gmail.com',NULL,'2024-07-11 03:13:45','2024-07-11 03:14:09');
+/*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
+
+--
 -- Table structure for table `failed_jobs`
 --
 
@@ -152,7 +180,7 @@ DROP TABLE IF EXISTS `libros`;
 CREATE TABLE `libros` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `estatus` tinyint(1) NOT NULL,
-  `caratula` varchar(120) NOT NULL,
+  `caratula` varchar(120) DEFAULT NULL,
   `titulo` varchar(120) NOT NULL,
   `ano_publica` year(4) NOT NULL,
   `autor` varchar(120) NOT NULL,
@@ -163,7 +191,7 @@ CREATE TABLE `libros` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -171,7 +199,7 @@ CREATE TABLE `libros` (
 --
 
 /*!40000 ALTER TABLE `libros` DISABLE KEYS */;
-INSERT INTO `libros` VALUES (1,0,'img/1.png','Algoritmos',2020,'Notes for Professional',3,3,2,NULL,'2024-07-04 21:23:46','2024-07-04 21:23:47'),(2,0,'img/2.png','Android',2022,'Notes for Professional',1,7,7,NULL,'2024-07-04 21:24:19','2024-07-04 21:24:19'),(3,0,'img/3.png','PostgreSQL',2020,'Notes for Professional',1,2,1,NULL,'2024-07-04 21:28:07','2024-07-04 22:31:30'),(4,0,'img/4.png','Los Vengadores',2024,'El Loco de eloquent',1,1,1,NULL,'2024-07-04 22:47:19','2024-07-04 22:47:19');
+INSERT INTO `libros` VALUES (1,0,'img/1.png','Algoritmos y algo más',2018,'Notes for Professionals',2,4,4,NULL,'2024-07-11 03:09:47','2024-07-11 03:14:42'),(2,0,'img/2.png','Android',2023,'Notes for Professionals',2,3,3,NULL,'2024-07-11 03:10:31','2024-07-11 03:11:44');
 /*!40000 ALTER TABLE `libros` ENABLE KEYS */;
 
 --
@@ -186,7 +214,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -194,7 +222,7 @@ CREATE TABLE `migrations` (
 --
 
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'0001_01_01_000000_create_users_table',1),(2,'0001_01_01_000001_create_cache_table',1),(3,'0001_01_01_000002_create_jobs_table',1),(4,'2024_06_27_174630_create_libros_table',1);
+INSERT INTO `migrations` VALUES (1,'0001_01_01_000000_create_users_table',1),(2,'0001_01_01_000001_create_cache_table',1),(3,'0001_01_01_000002_create_jobs_table',1),(4,'2024_06_27_174630_create_libros_table',1),(5,'2024_07_05_141635_create_clientes_table',1),(6,'2024_07_05_225749_create_prestamos_table',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 --
@@ -218,6 +246,37 @@ CREATE TABLE `password_reset_tokens` (
 
 /*!40000 ALTER TABLE `password_reset_tokens` DISABLE KEYS */;
 /*!40000 ALTER TABLE `password_reset_tokens` ENABLE KEYS */;
+
+--
+-- Table structure for table `prestamos`
+--
+
+DROP TABLE IF EXISTS `prestamos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `prestamos` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `estatus` tinyint(1) NOT NULL,
+  `id_cliente` bigint(20) unsigned NOT NULL,
+  `id_libro` bigint(20) unsigned NOT NULL,
+  `fecha_devuelto` date DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `prestamos_id_cliente_foreign` (`id_cliente`),
+  KEY `prestamos_id_libro_foreign` (`id_libro`),
+  CONSTRAINT `prestamos_id_cliente_foreign` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id`),
+  CONSTRAINT `prestamos_id_libro_foreign` FOREIGN KEY (`id_libro`) REFERENCES `libros` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `prestamos`
+--
+
+/*!40000 ALTER TABLE `prestamos` DISABLE KEYS */;
+INSERT INTO `prestamos` VALUES (1,1,1,1,'2024-07-10','2024-07-11 03:14:18','2024-07-11 03:14:41');
+/*!40000 ALTER TABLE `prestamos` ENABLE KEYS */;
 
 --
 -- Table structure for table `sessions`
@@ -244,7 +303,7 @@ CREATE TABLE `sessions` (
 --
 
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('PBXbFotBPkJFccAnwyYetFF0abYyY853XGqRS4Qe',1,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36','YTo0OntzOjY6Il90b2tlbiI7czo0MDoiaWhZSmJvQllhTlNEUUlna3B6Q1V6Z0Z4d1hJNnVLcjBVWXJNUEtBTiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9saWJyb3MiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=',1720118876);
+INSERT INTO `sessions` VALUES ('Q55qbxA1DKCee7r24x86WcZetNHBuL3AqlJWdKNf',NULL,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiUmhzUHI3cHM2QmxPWHZaVEZNTnVQejg4cE9XSE94bXpvMkZBZG5iMiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1720653805);
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 
 --
@@ -273,7 +332,7 @@ CREATE TABLE `users` (
 --
 
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Zena Legros V','emmanuel.sierra@gmail.com','2024-07-04 07:34:31','$2y$12$Npa7Ae7ubp8xRFkjTwTfeegFVwebvVakFj8hOhqr9fDPQU/S8jxH.','fVIXpG84s7KfB45dpjPtBNVHNHgmtoFaYUGAiIrtE0G1PhkoAlu6Mpl0x7Nu','2024-07-04 07:34:32','2024-07-04 07:34:32');
+INSERT INTO `users` VALUES (1,'Administrador','administrador@gmail.com','2024-07-11 03:01:01','$2y$12$Nooai28OdaJhTvXh3KboMuKC35Tr8dBhmIKKATE0rOulmORNKDlhe','t5wC1WhmUe6eRG6DiMJCMLHErAmFNKAwWAu8UKHvNWO4KnKTJzoXwqAlwhW4','2024-07-11 03:01:02','2024-07-11 03:01:02');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 --
@@ -289,4 +348,4 @@ INSERT INTO `users` VALUES (1,'Zena Legros V','emmanuel.sierra@gmail.com','2024-
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-04 14:58:34
+-- Dump completed on 2024-07-10 19:23:55

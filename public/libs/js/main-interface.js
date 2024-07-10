@@ -7,7 +7,7 @@ window.onload = () => {
     }, 4000);
 }
 
-//* Funcion para mostrar la imagen seleccionada en el input, incluso luego de una validación de input fallida
+//* Funcion para mostrar la imagen seleccionada en el input de la caratula
 function mostrarImagen(event) {
     var input = event.target;
     if (input.files && input.files[0]) {
