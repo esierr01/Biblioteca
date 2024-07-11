@@ -76,7 +76,7 @@ CREATE TABLE `clientes` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -84,7 +84,7 @@ CREATE TABLE `clientes` (
 --
 
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (1,0,'Pedro Perez','+58500362366','pedro@gmail.com',NULL,'2024-07-11 03:13:45','2024-07-11 03:14:09');
+INSERT INTO `clientes` VALUES (1,0,'Pedro Jimenez','+58500362377','pedro45@gmail.com',NULL,'2024-07-11 03:13:45','2024-07-11 05:49:24'),(2,0,'Carol García','+582123665574','ksjkds@gmail.com',NULL,'2024-07-11 05:32:20','2024-07-11 05:33:28'),(3,0,'Rodolfo Martinez Jr','+582124516600','rodolfo1@jhdjsh.com',NULL,'2024-07-11 05:48:19','2024-07-11 05:49:20');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 
 --
@@ -191,7 +191,7 @@ CREATE TABLE `libros` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -199,7 +199,7 @@ CREATE TABLE `libros` (
 --
 
 /*!40000 ALTER TABLE `libros` DISABLE KEYS */;
-INSERT INTO `libros` VALUES (1,0,'img/1.png','Algoritmos y algo más',2018,'Notes for Professionals',2,4,4,NULL,'2024-07-11 03:09:47','2024-07-11 03:14:42'),(2,0,'img/2.png','Android',2023,'Notes for Professionals',2,3,3,NULL,'2024-07-11 03:10:31','2024-07-11 03:11:44');
+INSERT INTO `libros` VALUES (1,0,'img/1.png','Algoritmos y algo más',2018,'Notes for Professionals',2,4,4,NULL,'2024-07-11 03:09:47','2024-07-11 05:46:57'),(2,0,'img/2.png','Android plus',2023,'Notes for Professionals',2,3,3,NULL,'2024-07-11 03:10:31','2024-07-11 05:47:02'),(3,0,'img/3.png','Bash para profesionales',2020,'Pedro Pereira Nuñez',3,4,4,NULL,'2024-07-11 05:18:05','2024-07-11 05:29:13'),(4,0,'img/4.png','PHP profesional',2022,'Notes for Professionals',1,2,2,NULL,'2024-07-11 05:18:37','2024-07-11 05:19:25'),(5,0,'img/5.png','Javascript',2019,'Jorge Luis',3,2,2,NULL,'2024-07-11 05:28:48','2024-07-11 05:28:48'),(6,0,'img/6.png','Html',2020,'Kiko García',1,2,1,NULL,'2024-07-11 05:29:38','2024-07-11 05:53:21'),(7,0,'img/7.png','MySql Base de Datos',2020,'Jorge Luis Peñalver',2,2,2,NULL,'2024-07-11 05:45:05','2024-07-11 05:45:48');
 /*!40000 ALTER TABLE `libros` ENABLE KEYS */;
 
 --
@@ -267,7 +267,7 @@ CREATE TABLE `prestamos` (
   KEY `prestamos_id_libro_foreign` (`id_libro`),
   CONSTRAINT `prestamos_id_cliente_foreign` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id`),
   CONSTRAINT `prestamos_id_libro_foreign` FOREIGN KEY (`id_libro`) REFERENCES `libros` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -275,7 +275,7 @@ CREATE TABLE `prestamos` (
 --
 
 /*!40000 ALTER TABLE `prestamos` DISABLE KEYS */;
-INSERT INTO `prestamos` VALUES (1,1,1,1,'2024-07-10','2024-07-11 03:14:18','2024-07-11 03:14:41');
+INSERT INTO `prestamos` VALUES (1,1,1,1,'2024-07-10','2024-07-11 03:14:18','2024-07-11 03:14:41'),(2,1,2,1,'2024-07-11','2024-07-11 05:38:01','2024-07-11 05:38:14'),(3,1,2,6,'2024-07-11','2024-07-11 05:50:25','2024-07-11 05:52:26'),(4,1,1,6,'2024-07-11','2024-07-11 05:51:40','2024-07-11 05:53:21'),(5,0,2,6,NULL,'2024-07-11 05:52:50','2024-07-11 05:52:50');
 /*!40000 ALTER TABLE `prestamos` ENABLE KEYS */;
 
 --
@@ -303,7 +303,7 @@ CREATE TABLE `sessions` (
 --
 
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('Q55qbxA1DKCee7r24x86WcZetNHBuL3AqlJWdKNf',NULL,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiUmhzUHI3cHM2QmxPWHZaVEZNTnVQejg4cE9XSE94bXpvMkZBZG5iMiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1720653805);
+INSERT INTO `sessions` VALUES ('nEHeAvTPy1fpKCBq39quWXyGrsffUEzC3PeotnKW',NULL,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36','YTozOntzOjY6Il90b2tlbiI7czo0MDoiUmhzUHI3cHM2QmxPWHZaVEZNTnVQejg4cE9XSE94bXpvMkZBZG5iMiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1720662893);
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 
 --
@@ -324,7 +324,7 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -332,7 +332,7 @@ CREATE TABLE `users` (
 --
 
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Administrador','administrador@gmail.com','2024-07-11 03:01:01','$2y$12$Nooai28OdaJhTvXh3KboMuKC35Tr8dBhmIKKATE0rOulmORNKDlhe','t5wC1WhmUe6eRG6DiMJCMLHErAmFNKAwWAu8UKHvNWO4KnKTJzoXwqAlwhW4','2024-07-11 03:01:02','2024-07-11 03:01:02');
+INSERT INTO `users` VALUES (1,'Administrador','administrador@gmail.com','2024-07-11 03:01:01','$2y$12$Nooai28OdaJhTvXh3KboMuKC35Tr8dBhmIKKATE0rOulmORNKDlhe','wJcn2So78dieLwGprqr2xqAebYvbXdbI7JUtiSfjPoScWmUoYiufnzEJPMca','2024-07-11 03:01:02','2024-07-11 03:01:02');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 --
@@ -348,4 +348,4 @@ INSERT INTO `users` VALUES (1,'Administrador','administrador@gmail.com','2024-07
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-10 19:23:55
+-- Dump completed on 2024-07-10 22:08:21
