@@ -56,7 +56,6 @@ class ClienteController extends Controller
     {
         //* Función para eliminar / restaurar, si esta con estatus=0 (no eliminado, lo podemos eliminar), si esta con estatus =1 (si eliminado, lo podemos restaurar)
         if ($cliente->estatus == 0) {
-            $existeRegistro = Prestamo::where('id_cliente', $cliente->id)->exists();
             $existeRegistro = Prestamo::where('id_cliente', $cliente->id)
                            ->where('estatus', '=', 0) 
                            ->exists();
